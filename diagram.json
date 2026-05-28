@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Lasso",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": 0, "left": 300, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -120,
+      "left": 500,
+      "attrs": { "temperature": "37.5", "humidity": "31" }
+    },
+    { "type": "wokwi-photoresistor-sensor", "id": "ldr1", "top": 300, "left": 500, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -13.2,
+      "left": 368.6,
+      "attrs": { "color": "purple" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_led",
+      "top": 56,
+      "left": 366,
+      "rotate": 90,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 160,
+      "left": 358,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "esp:3V3", "bb1:tp.1", "red", [] ],
+    [ "esp:GND.1", "bb1:bn.1", "black", [] ],
+    [ "esp:D2", "bb1:2t.a", "yellow", [] ],
+    [ "bb1:2t.b", "r_led:1", "yellow", [] ],
+    [ "r_led:2", "led1:A", "yellow", [] ],
+    [ "led1:C", "bb1:bn.3", "black", [] ],
+    [ "esp:D15", "bb1:8t.a", "blue", [] ],
+    [ "bb1:8t.b", "btn1:1.l", "blue", [] ],
+    [ "btn1:2.l", "bb1:bn.8", "black", [] ],
+    [ "esp:D4", "dht1:SDA", "green", [] ],
+    [ "bb1:tp.12", "dht1:VCC", "red", [] ],
+    [ "bb1:bn.12", "dht1:GND", "black", [] ],
+    [ "esp:D34", "ldr1:AO", "orange", [] ],
+    [ "bb1:tp.15", "ldr1:VCC", "red", [] ],
+    [ "bb1:bn.15", "ldr1:GND", "black", [] ]
+  ],
+  "dependencies": {}
+}
